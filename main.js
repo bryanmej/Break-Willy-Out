@@ -1,7 +1,9 @@
 const board = document.querySelector('#board')
 const ctx = board.getContext('2d')
-
 const btn = document.getElementById('start')
+
+//Interval
+let interval
 
 //Mine variables
 let x = board.width / 2 - 15
@@ -173,10 +175,10 @@ document.addEventListener('keydown', (e) => {
   } 
 })
 
-// btn.onclick = () => {
-//   let interval = setInterval(update, 10)
-// }
-let interval = setInterval(update, 10)
+btn.onclick = () => {
+   interval = setInterval(update, 10)
+}
+//let interval = setInterval(update, 10)
 
 
 
