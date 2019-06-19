@@ -1,11 +1,18 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  
 }
 
 .side-cntnt {
   float: right;
-  margin-right: 5%;
+  margin-right: 6%;
   width: 20%;
+  font-size: 1.3em;
+}
+
+#plast {
+  color:#FF4E50;
+  font-weight: bold;
 }
 
 #start, #reset {
@@ -15,10 +22,27 @@ body {
   border-radius: 4px;
   font-size: 1.5em;
   outline: none;
+  width: 40%;
 }
 
-@media(max-width:1300px) {
+.cntrl {
+  background: black;
+  color:white;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 1% 2%;
+}
+
+@media(max-width:1305px) {
   .side-cntnt {
     float:none;
+    width: inherit;
+  }
+  #start, #reset {
+    width: inherit;
+    padding: 1% 4%;
+  }
+  .cntrl {
+    padding: 0 1%;
   }
 }

@@ -58,7 +58,7 @@ class Board {
 
 class Willy {
   constructor(){
-    this.x = board.width / 2 - 80
+    this.x = board.width / 2 - 110
     this.y = 25
     this.width = 250
     this.height = 100
@@ -132,7 +132,7 @@ class Score {
     this.y = board.height - 10
   }
   draw() {
-    ctx.font = "22px Arial"
+    ctx.font = "24px Arial"
     ctx.fillStyle = "white"
     ctx.fillText(`Score: ${score}`, this.x, this.y)
   }
@@ -195,7 +195,6 @@ function update() {
   collisionDetect()
   points.draw()
 }
-
 
 //Listeners
 bgboard.audio.addEventListener('ended', function() {
