@@ -41,6 +41,10 @@ class Board {
     this.height = board.height
     this.img = new Image()
     this.img.src = './Images/undersea.png'
+
+    this.audio = new Audio()
+    this.audio.src = 'http://23.237.126.42/ost/pokemon-gold-silver-crystal/zbkuympx/022%20Violet%20City.mp3'
+
     this.img.onload = () => {
       this.draw()
     }
@@ -48,6 +52,13 @@ class Board {
   draw() {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
   }
+}
+
+class Willy {
+  constructor(){
+    this.audio = new Audio()
+    this.audio.src = 'https://www.partnersinrhyme.com/files/sounds1/MP3/animal/WhalesDS/dolphin1.mp3'
+  }  
 }
 
 class Mine {
@@ -72,6 +83,7 @@ class Mine {
         if(this.x > ship.x - 60 && this.x < ship.x + ship.width) {
           dy = -dy
         } else {
+          bgboard.audio.pause()
           alert("GAME OVER");
           clearInterval(interval);
         }
@@ -143,8 +155,10 @@ function collisionDetect() {
           b.status = 0
           score++
           if(score === blockColumns * blockRow) {
+            bgboard.audio.pause()
             alert('You win Willy is free!!!')
-            clearInterval(interval)
+            willy.audio.play()
+            clearInterval(interval) 
           }
         }
       }  
@@ -156,6 +170,7 @@ const bgboard = new Board()
 const ship = new Ship()
 const mine = new Mine()
 const points = new Score()
+const willy = new Willy()
 
 function update() {
   ctx.clearRect(0, 0, board.width, board.height)
@@ -167,6 +182,12 @@ function update() {
   points.draw()
 }
 
+bgboard.audio.addEventListener('ended', function() {
+  this.currentTime = 0
+  this.play()
+}, false)
+
+
 document.addEventListener('keydown', (e) => {
   if(e.keyCode === 39) {
      ship.moveRight()
@@ -176,9 +197,10 @@ document.addEventListener('keydown', (e) => {
 })
 
 btn.onclick = () => {
-   interval = setInterval(update, 10)
+  bgboard.audio.play() 
+  interval = setInterval(update, 10)
 }
-//let interval = setInterval(update, 10)
+
 
 
 
