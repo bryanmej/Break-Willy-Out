@@ -29,13 +29,9 @@ for(let c = 0; c < blockColumns; c++) {
   }
 }
 
-//Score variable
+//Auxiliar variable
 let score = 0
-
-//Lives
 let lives = 3
-
-//Interval
 let interval
 
 //Classes for game components
@@ -97,10 +93,19 @@ class Mine {
         if(this.x > ship.x - 60 && this.x < ship.x + ship.width) {
           dy = -dy
         } else {
-            bgboard.audio.pause()
+          lives--
+          if(lives === 0) {
             alert("GAME OVER");
             clearInterval(interval);
-          }
+            bgboard.audio.pause()
+          } else {
+             this.x = board.width / 2 - 15
+             this.y = board.height - 140
+             dx = -3
+             dy = -3
+            ship.x = board.width / 2 - 25
+          } 
+        }
       }    
     ctx.drawImage(this.img, this.x += dx , this.y += dy, this.width, this.height)
   }
