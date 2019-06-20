@@ -4,19 +4,33 @@ body {
 }
 
 h1 {
+  margin-top: 0;
   text-shadow: 2px 2px 10px green;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1%;
 }
 
 .side-cntnt {
-  float: right;
-  margin-right: 6%;
+  margin-left: 3%;
   width: 20%;
   font-size: 1.3em;
+}
+
+.intro {
+  margin: 0;
 }
 
 #plast {
   color:#FF4E50;
   font-weight: bold;
+}
+
+.instruct {
+  margin-top: 0;
+  line-height: 2;
 }
 
 #start, #reset {
@@ -37,7 +51,7 @@ h1 {
   padding: 1% 2%;
 }
 
-@media(max-width:1305px) {
+@media(max-width:1265px) {
   .side-cntnt {
     float:none;
     width: inherit;

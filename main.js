@@ -32,6 +32,9 @@ for(let c = 0; c < blockColumns; c++) {
 //Score variable
 let score = 0
 
+//Lives
+let lives = 3
+
 //Interval
 let interval
 
@@ -94,11 +97,11 @@ class Mine {
         if(this.x > ship.x - 60 && this.x < ship.x + ship.width) {
           dy = -dy
         } else {
-          bgboard.audio.pause()
-          alert("GAME OVER");
-          clearInterval(interval);
-        }
-      }
+            bgboard.audio.pause()
+            alert("GAME OVER");
+            clearInterval(interval);
+          }
+      }    
     ctx.drawImage(this.img, this.x += dx , this.y += dy, this.width, this.height)
   }
 }
@@ -135,6 +138,18 @@ class Score {
     ctx.font = "24px Arial"
     ctx.fillStyle = "white"
     ctx.fillText(`Score: ${score}`, this.x, this.y)
+  }
+}
+
+class Lives {
+  constructor() {
+    this.x = board.width - 100
+    this.y = board.height - 10
+  }
+  draw() {
+    ctx.font = "24px Arial"
+    ctx.fillStyle = "white"
+    ctx.fillText(`Lives: ${lives}`, this.x, this.y)
   }
 }
 
@@ -184,6 +199,7 @@ const ship = new Ship()
 const mine = new Mine()
 const points = new Score()
 const willy = new Willy()
+const life = new Lives()
 
 function update() {
   ctx.clearRect(0, 0, board.width, board.height)
@@ -194,6 +210,7 @@ function update() {
   drawBlocks()
   collisionDetect()
   points.draw()
+  life.draw()
 }
 
 //Listeners

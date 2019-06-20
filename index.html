@@ -8,14 +8,18 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <canvas id="board" width="950" height="700" style="border: 2px solid blue"></canvas>
-  <div class="side-cntnt">
-    <h1>Break Willy Out!</h1>
-    <p>Willy the whale is trapped in in a bunch of <span id="plast">plastic</span> and needs your help to be freed</p>
-    <p>Use <span class="cntrl">A</span> and <span class="cntrl">D</span> to move left or right <br>or<br> ◀️ and ▶️</p>  
-    <button id="start">Start</button>
-    <button id="reset">Reset</button>
-  </div>  
+  <div class="container">
+    <div class="cnvas">
+      <canvas id="board" width="940" height="680" style="border: 2px solid purple"></canvas>
+    </div>  
+    <div class="side-cntnt">
+      <h1>Break Willy Out!</h1>
+      <p class="intro">Willy the whale is trapped in in a bunch of <span id="plast">plastic</span> and needs your help to be freed</p>
+      <p class="instruct">Use <span class="cntrl">A</span> and <span class="cntrl">D</span> to move left or right or ◀️ and ▶️</p>  
+      <button id="start">Start</button>
+      <button id="reset">Reset</button>
+    </div> 
+  </div>
   <script src="main.js"></script>
 </body>
 </html>
