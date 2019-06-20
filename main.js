@@ -95,9 +95,9 @@ class Mine {
         } else {
           lives--
           if(lives === 0) {
+            bgboard.audio.pause()
             alert("GAME OVER");
             clearInterval(interval);
-            bgboard.audio.pause()
           } else {
              this.x = board.width / 2 - 15
              this.y = board.height - 140
