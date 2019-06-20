@@ -6,8 +6,8 @@ const reset = document.getElementById('reset')
 //Mine variables
 let x = board.width / 2 - 15
 let y = board.height - 140
-let dx = 3
-let dy = -3
+let dx = 4
+let dy = -4
 
 //Block variables
 const blockRow = 3
@@ -15,7 +15,7 @@ const blockColumns = 7
 const blockWidth = 100
 const blockHeight = 20
 const blockPadd = 20
-const blockMargTop = 30
+const blockMargTop = 25
 const blockMargLeft = 65
 let blocks = []
 for(let c = 0; c < blockColumns; c++) {
@@ -31,6 +31,9 @@ for(let c = 0; c < blockColumns; c++) {
 
 //Score variable
 let score = 0
+
+//testing lives
+let lives = 3
 
 //Interval
 let interval
@@ -95,8 +98,17 @@ class Mine {
           dy = -dy
         } else {
           bgboard.audio.pause()
-          alert("GAME OVER");
-          clearInterval(interval);
+          lives--
+          if(lives === 0) {
+            alert("GAME OVER");
+            clearInterval(interval);
+          } else {
+             this.x = board.width / 2 - 15
+             this.y = board.height - 140
+             dx = -4
+             dy = -4
+            ship.x = board.width / 2 - 25
+          } 
         }
       }
     ctx.drawImage(this.img, this.x += dx , this.y += dy, this.width, this.height)
@@ -138,6 +150,18 @@ class Score {
   }
 }
 
+class Lives {
+  constructor() {
+    this.x = board.width - 100
+    this.y = board.height- 10
+  }
+  draw() {
+    ctx.font = "24px Arial"
+    ctx.fillStyle = "white"
+    ctx.fillText(`Lives: ${lives}`, this.x, this.y)
+  }
+}
+
 //helper functions
 function drawBlocks() {
   for(let c = 0; c < blockColumns; c++) {
@@ -162,7 +186,7 @@ function collisionDetect() {
     for(let r = 0; r < blockRow; r++) {
       let b = blocks[c][r]
       if(b.display === 1) {
-        if(mine.x > b.x + 10 && mine.x < b.x + blockWidth && mine.y > b.y - 50 && mine.y < b.y + blockHeight) {
+        if(mine.x > b.x + 8 && mine.x < b.x + blockWidth && mine.y > b.y - 50 && mine.y < b.y + blockHeight) {
           dy = -dy
           b.display = 0
           score++
@@ -184,6 +208,7 @@ const ship = new Ship()
 const mine = new Mine()
 const points = new Score()
 const willy = new Willy()
+const life = new Lives()
 
 function update() {
   ctx.clearRect(0, 0, board.width, board.height)
@@ -194,6 +219,7 @@ function update() {
   drawBlocks()
   collisionDetect()
   points.draw()
+  life.draw()
 }
 
 //Listeners
