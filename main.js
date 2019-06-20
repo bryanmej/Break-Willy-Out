@@ -162,7 +162,7 @@ function collisionDetect() {
     for(let r = 0; r < blockRow; r++) {
       let b = blocks[c][r]
       if(b.display === 1) {
-        if(mine.x > b.x + 5 && mine.x < b.x + blockWidth && mine.y > b.y - 50 && mine.y < b.y + blockHeight) {
+        if(mine.x > b.x + 10 && mine.x < b.x + blockWidth && mine.y > b.y - 50 && mine.y < b.y + blockHeight) {
           dy = -dy
           b.display = 0
           score++
