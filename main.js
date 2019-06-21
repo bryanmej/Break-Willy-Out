@@ -101,8 +101,8 @@ class Mine {
           } else {
              this.x = board.width / 2 - 15
              this.y = board.height - 140
-             dx = -3
-             dy = -3
+             dx = -4
+             dy = -4
             ship.x = board.width / 2 - 25
           } 
         }
@@ -127,7 +127,7 @@ class Ship {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
   }
   moveRight() {
-    if(this.x < board.width - this.width) this.x += 30
+    if(this.x < board.width - this.width) this.x += 30 
   }
   moveLeft() {
     if(this.x > 0) this.x -= 30
@@ -140,7 +140,7 @@ class Score {
     this.y = board.height - 10
   }
   draw() {
-    ctx.font = "24px Arial"
+    ctx.font = "26px Arial"
     ctx.fillStyle = "white"
     ctx.fillText(`Score: ${score}`, this.x, this.y)
   }
@@ -152,7 +152,7 @@ class Lives {
     this.y = board.height - 10
   }
   draw() {
-    ctx.font = "24px Arial"
+    ctx.font = "26px Arial"
     ctx.fillStyle = "white"
     ctx.fillText(`Lives: ${lives}`, this.x, this.y)
   }
@@ -188,8 +188,9 @@ function collisionDetect() {
           score++
           if(score === blockColumns * blockRow) {
             bgboard.audio.pause()
-            alert('You win Willy is free!!!')
             willy.audio.play()
+            alert('You win Willy is free!!!')
+            
             clearInterval(interval) 
           }
         }
